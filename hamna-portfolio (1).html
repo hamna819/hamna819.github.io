@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamna Taiyeb Zubairi — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E9EDE6;
+    --bg-card:#FFFFFF;
+    --ink:#16241F;
+    --ink-soft:#4C5C54;
+    --accent:#C98A2C;
+    --accent-soft:#E6C48A;
+    --accent-2:#3D6B5C;
+    --line:#CBD2C4;
+    --dark-bg:#132420;
+    --dark-line:#2B4A41;
+    --dark-text:#E9EDE6;
+    --radius:2px;
+    --wrap:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Serif', serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.06em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px;}
+  section{padding:96px 0;}
+  @media (max-width:640px){ section{padding:64px 0;} .wrap{padding:0 20px;} }
+
+  ::selection{background:var(--accent-soft);color:var(--ink);}
+  :focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(233,237,230,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:64px;
+  }
+  .brand{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600; font-size:16px;
+  }
+  .brand span{color:var(--accent-2);}
+  .navlinks{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .navlinks a{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; text-transform:uppercase; letter-spacing:0.08em;
+    text-decoration:none; color:var(--ink-soft);
+    padding-bottom:4px; border-bottom:1px solid transparent;
+    transition:color .2s, border-color .2s;
+  }
+  .navlinks a:hover{color:var(--ink); border-color:var(--accent);}
+  @media (max-width:720px){ .navlinks{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:72px 0 96px;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr; gap:48px;} }
+
+  .eyebrow{
+    font-size:12px; text-transform:uppercase; color:var(--accent-2);
+    display:flex; align-items:center; gap:10px; margin-bottom:20px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent-2);}
+
+  .hero h1{
+    font-size:clamp(38px, 6vw, 64px);
+    font-weight:700; line-height:1.05;
+  }
+  .hero .role{
+    font-family:'Space Grotesk',sans-serif;
+    color:var(--accent-2); font-weight:500;
+    font-size:clamp(16px,2vw,20px); margin-top:10px;
+  }
+  .hero p.lede{
+    max-width:52ch; margin-top:22px; color:var(--ink-soft); font-size:16.5px;
+  }
+  .hero-meta{
+    margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft);
+  }
+  .cta-row{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-transform:uppercase;
+    letter-spacing:.06em; text-decoration:none; padding:13px 20px;
+    border-radius:var(--radius); display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s, background .2s, color .2s;
+  }
+  .btn-primary{background:var(--ink); color:var(--bg);}
+  .btn-primary:hover{background:var(--accent-2); transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--ink); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--accent-2); color:var(--accent-2); transform:translateY(-1px);}
+
+  /* ---------- NETWORK PANEL (signature element) ---------- */
+  .panel{
+    background:var(--dark-bg); border-radius:6px; padding:28px 22px 22px;
+    border:1px solid var(--dark-line);
+  }
+  .panel-label{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:#7FA79A;
+    text-transform:uppercase; letter-spacing:.1em; margin-bottom:10px;
+    display:flex; justify-content:space-between;
+  }
+  .panel svg{width:100%; height:auto; display:block;}
+  .node-label{
+    font-family:'IBM Plex Mono',monospace; font-size:10px; fill:#B9C7C1;
+  }
+  .node circle{
+    fill:var(--dark-bg); stroke:#4F7A6C; stroke-width:1.4;
+  }
+  .node.out circle{stroke:var(--accent); fill:var(--accent); opacity:0.15;}
+  .node.out circle.core{opacity:1; fill:var(--accent); stroke:none;}
+  .edge{
+    stroke:#3E6357; stroke-width:1; fill:none;
+  }
+  .pulse{
+    fill:var(--accent);
+    animation:travel 3.4s linear infinite;
+    offset-rotate: 0deg;
+  }
+  .pulse.d2{animation-delay:.5s;}
+  .pulse.d3{animation-delay:1s;}
+  .pulse.d4{animation-delay:1.5s;}
+  @keyframes travel{
+    0%{offset-distance:0%; opacity:0;}
+    8%{opacity:1;}
+    92%{opacity:1;}
+    100%{offset-distance:100%; opacity:0;}
+  }
+
+  /* ---------- SECTION HEADERS (layer device) ---------- */
+  .layer-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:40px;
+    border-bottom:1px solid var(--line); padding-bottom:18px;
+  }
+  .layer-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent);
+    white-space:nowrap;
+  }
+  .layer-head h2{font-size:clamp(24px,3.4vw,32px); font-weight:600;}
+  .section-note{color:var(--ink-soft); max-width:60ch; margin-top:-24px; margin-bottom:40px; font-size:15px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  @media (max-width:800px){.about-grid{grid-template-columns:1fr;}}
+  .fact-list{list-style:none; margin:0; padding:0; font-family:'IBM Plex Mono',monospace; font-size:13px;}
+  .fact-list li{
+    display:flex; justify-content:space-between; padding:12px 0; border-top:1px solid var(--line);
+  }
+  .fact-list li:last-child{border-bottom:1px solid var(--line);}
+  .fact-k{color:var(--ink-soft);}
+  .fact-v{text-align:right;}
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  @media (max-width:900px){.skill-groups{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.skill-groups{grid-template-columns:1fr;}}
+  .skill-card{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:4px;
+    padding:22px 20px; transition:border-color .2s, transform .2s;
+  }
+  .skill-card:hover{border-color:var(--accent-2); transform:translateY(-3px);}
+  .skill-card h3{
+    font-size:14px; font-weight:600; color:var(--accent-2);
+    margin-bottom:14px; display:flex; align-items:center; gap:8px;
+  }
+  .skill-card h3::before{content:"";width:8px;height:8px;background:var(--accent);border-radius:50%;flex:0 0 auto;}
+  .chip-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+  .chip-list li{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink);
+    padding-left:2px;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project{
+    border-top:1px solid var(--line);
+    padding:34px 0;
+    display:grid; grid-template-columns:220px 1fr; gap:36px;
+  }
+  .project:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:760px){.project{grid-template-columns:1fr; gap:12px;}}
+  .project-index{
+    font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:13px;
+  }
+  .project h3{font-size:20px; font-weight:600; margin-bottom:8px;}
+  .project p{color:var(--ink-soft); margin:0 0 14px; max-width:62ch; font-size:15px;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:.05em; padding:5px 10px; border:1px solid var(--accent-2);
+    color:var(--accent-2); border-radius:20px;
+  }
+
+  /* ---------- EDU / CERTS / ACHIEVEMENTS ---------- */
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  @media (max-width:800px){.split{grid-template-columns:1fr;}}
+  .card{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:4px; padding:26px;
+  }
+  .card h3{font-size:15px; font-weight:600; color:var(--accent-2); margin-bottom:14px;}
+  .edu-row{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;}
+  .edu-row .yr{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);}
+  ul.plain{margin:0; padding-left:18px; color:var(--ink-soft); font-size:14.5px;}
+  ul.plain li{margin-bottom:6px;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    background:var(--dark-bg); color:var(--dark-text); padding:90px 0 40px; margin-top:40px;
+  }
+  footer h2{font-size:clamp(28px,5vw,44px); font-weight:700; max-width:14ch;}
+  footer p{color:#A9BDB3; max-width:48ch; margin-top:16px;}
+  .contact-row{display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;}
+  .contact-row a{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-transform:uppercase;
+    letter-spacing:.06em; text-decoration:none; color:var(--dark-bg); background:var(--accent);
+    padding:13px 20px; border-radius:2px; display:inline-flex; align-items:center; gap:8px;
+    transition:background .2s, transform .2s;
+  }
+  .contact-row a.ghost{background:transparent; color:var(--dark-text); border:1px solid var(--dark-line);}
+  .contact-row a:hover{transform:translateY(-1px); background:#e0a752;}
+  .contact-row a.ghost:hover{border-color:var(--accent);}
+  .foot-bottom{
+    margin-top:70px; padding-top:24px; border-top:1px solid var(--dark-line);
+    display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px; color:#7C8F86; flex-wrap:wrap; gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">HAMNA<span>.</span>TZ</div>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow mono">Software Development — AI — Machine Learning — Deep Learning</div>
+      <h1>Hamna Taiyeb<br>Zubairi</h1>
+      <div class="role">Software Engineering Undergraduate, building toward AI &amp; ML</div>
+      <p class="lede">I design and build intelligent systems — from predictive models to full desktop and web applications — with a focus on turning data into decisions.</p>
+      <div class="hero-meta">KARACHI, PAKISTAN · SSUET · CGPA 3.20 · CLASS OF 2028</div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:muhammadtaiyeb98@gmail.com">Email Me →</a>
+        <a class="btn btn-ghost" href="https://github.com/hamna819" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/hamna-taiyeb-zubairi-858a90338" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-label"><span>FORWARD PASS</span><span>1×4 → 4</span></div>
+      <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- edges -->
+        <path id="e1" class="edge" d="M70,150 C160,150 160,50 300,50"/>
+        <path id="e2" class="edge" d="M70,150 C160,150 160,110 300,110"/>
+        <path id="e3" class="edge" d="M70,150 C160,150 160,190 300,190"/>
+        <path id="e4" class="edge" d="M70,150 C160,150 160,250 300,250"/>
+
+        <!-- traveling pulses -->
+        <circle class="pulse" r="3"><animateMotion dur="3.4s" repeatCount="indefinite" begin="0s"><mpath href="#e1"/></animateMotion></circle>
+        <circle class="pulse d2" r="3"><animateMotion dur="3.4s" repeatCount="indefinite" begin="0.5s"><mpath href="#e2"/></animateMotion></circle>
+        <circle class="pulse d3" r="3"><animateMotion dur="3.4s" repeatCount="indefinite" begin="1s"><mpath href="#e3"/></animateMotion></circle>
+        <circle class="pulse d4" r="3"><animateMotion dur="3.4s" repeatCount="indefinite" begin="1.5s"><mpath href="#e4"/></animateMotion></circle>
+
+        <!-- input node -->
+        <g class="node">
+          <circle cx="70" cy="150" r="20"/>
+          <text x="70" y="185" text-anchor="middle" class="node-label">HAMNA.TZ</text>
+        </g>
+
+        <!-- output nodes -->
+        <g class="node">
+          <circle cx="300" cy="50" r="14"/>
+          <text x="322" y="54" class="node-label">Software Dev</text>
+        </g>
+        <g class="node">
+          <circle cx="300" cy="110" r="14"/>
+          <text x="322" y="114" class="node-label">Artificial Int.</text>
+        </g>
+        <g class="node">
+          <circle cx="300" cy="190" r="14"/>
+          <text x="322" y="194" class="node-label">Machine Lrn.</text>
+        </g>
+        <g class="node">
+          <circle cx="300" cy="250" r="14"/>
+          <text x="322" y="254" class="node-label">Deep Lrn.</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="layer-head">
+      <span class="layer-tag mono">INPUT</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <p style="font-size:16.5px; color:var(--ink-soft);">
+        I'm a Software Engineering undergraduate at Sir Syed University of Engineering &amp; Technology,
+        working at the intersection of software engineering and applied AI. My projects range from
+        predictive machine learning models to full desktop applications with integrated chatbots —
+        I like taking an idea from raw data to a working, usable system. I'm currently deepening my
+        skills in deep learning and exploring Large Language Models and Generative AI as the next
+        layer of what I want to build.
+      </p>
+      <ul class="fact-list">
+        <li><span class="fact-k">Institution</span><span class="fact-v">SSUET</span></li>
+        <li><span class="fact-k">Program</span><span class="fact-v">BS Software Engineering</span></li>
+        <li><span class="fact-k">Current Semester</span><span class="fact-v">5th</span></li>
+        <li><span class="fact-k">CGPA</span><span class="fact-v">3.20</span></li>
+        <li><span class="fact-k">Expected Graduation</span><span class="fact-v">October 2028</span></li>
+        <li><span class="fact-k">Location</span><span class="fact-v">Karachi, Pakistan</span></li>
+        <li><span class="fact-k">Languages Spoken</span><span class="fact-v">English, Urdu</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="background:var(--bg-card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="layer-head">
+      <span class="layer-tag mono">LAYER 01</span>
+      <h2>Skills</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <ul class="chip-list">
+          <li>Python</li><li>Java</li><li>JavaScript</li><li>SQL</li><li>HTML5</li><li>CSS3</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>AI &amp; ML</h3>
+        <ul class="chip-list">
+          <li>TensorFlow</li><li>Keras</li><li>Scikit-learn</li><li>Pandas</li><li>NumPy</li><li>CNNs</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Databases</h3>
+        <ul class="chip-list">
+          <li>MySQL</li><li>MongoDB</li><li>Microsoft SQL Server</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Tools</h3>
+        <ul class="chip-list">
+          <li>Git &amp; GitHub</li><li>VS Code</li><li>NetBeans</li><li>Ubuntu</li><li>JavaFX</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="layer-head">
+      <span class="layer-tag mono">LAYER 02</span>
+      <h2>Projects</h2>
+    </div>
+
+    <div class="project">
+      <div class="project-index mono">01 / ML</div>
+      <div>
+        <h3>Diabetes Detection System</h3>
+        <p>A machine learning model that predicts diabetes risk from patient health data — covering
+        data preprocessing, feature engineering, and evaluation to improve prediction accuracy with
+        supervised learning.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-index mono">02 / DL</div>
+      <div>
+        <h3>Hospital Management System with AI Chatbot</h3>
+        <p>A hospital management application with patient management, appointment scheduling, and
+        medical record handling, integrated with an AI chatbot that answers patient queries and
+        improves user interaction.</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Java</span><span class="tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-index mono">03 / DESKTOP</div>
+      <div>
+        <h3>JavaFX Desktop Applications</h3>
+        <p>A collection of desktop applications — CRUD systems, calculators, quiz apps, and management
+        tools — built around object-oriented design with interactive user interfaces.</p>
+        <div class="tag-row">
+          <span class="tag">Java</span><span class="tag">JavaFX</span><span class="tag">OOP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-index mono">04 / WEB</div>
+      <div>
+        <h3>Responsive Web Applications</h3>
+        <p>Responsive websites built with modern web development practices, designed for a consistent,
+        user-friendly experience across desktop and mobile devices.</p>
+        <div class="tag-row">
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" style="background:var(--bg-card); border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="layer-head">
+      <span class="layer-tag mono">OUTPUT</span>
+      <h2>Education &amp; Recognition</h2>
+    </div>
+    <div class="split">
+      <div class="card">
+        <h3>EDUCATION</h3>
+        <div class="edu-row">
+          <span>BS Software Engineering — SSUET</span>
+          <span class="yr">Exp. Oct 2028</span>
+        </div>
+        <p style="color:var(--ink-soft); font-size:14px; margin-top:4px;">Currently in 5th semester · CGPA 3.20</p>
+      </div>
+      <div class="card">
+        <h3>CERTIFICATIONS &amp; ACHIEVEMENTS</h3>
+        <ul class="plain">
+          <li>🏆 1st Place — Project Exhibition</li>
+          <li>Kaggle Python Coder Badge</li>
+          <li>Kaggle Code Forker Badge</li>
+          <li>Multiple completed AI &amp; software development academic projects</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="mono" style="color:var(--accent); font-size:12px;">OUTPUT LAYER</span>
+    <h2 style="margin-top:12px;">Let's build something intelligent.</h2>
+    <p>Open to opportunities in software development, AI, and machine learning. Reach out — I'd love to talk about what you're building.</p>
+    <div class="contact-row">
+      <a href="mailto:muhammadtaiyeb98@gmail.com">✉ muhammadtaiyeb98@gmail.com</a>
+      <a class="ghost" href="https://www.linkedin.com/in/hamna-taiyeb-zubairi-858a90338" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="ghost" href="https://github.com/hamna819" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="foot-bottom">
+      <span>Hamna Taiyeb Zubairi · Karachi, Pakistan</span>
+      <span>Software Development · AI · Machine Learning · Deep Learning</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
